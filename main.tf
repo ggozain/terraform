@@ -7,8 +7,15 @@ terraform {
     }
   }
 
-  required_version = ">= 1.1.0"
+  cloud {
+    organization = "gozain-lab"
+    workspaces {
+      name = "terraform"
+    }
+  }
+
 }
+
 
 provider "azurerm" {
   features {}
@@ -19,9 +26,9 @@ resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = "westus2"
 
-   tags = {
+  tags = {
     Environment = "Terraform Getting Started"
-    Team = "DevOps"
+    Team        = "DevOps"
   }
 }
 
